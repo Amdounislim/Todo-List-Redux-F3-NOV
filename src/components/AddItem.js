@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Card, Form, Button, InputGroup, FormControl } from "react-bootstrap";
-import { addTask } from "../JS/actions/actionTask";
+import { addTask, toggle } from "../JS/actions/actionTask";
 
 const AddItem = () => {
   const [myInput, setMyInput] = useState("");
@@ -38,9 +38,9 @@ const AddItem = () => {
             </InputGroup>
           </Form.Group>
         </Form>
-        {/* <Button variant="info" className="mr-3">
+        <Button variant="info" className="mr-3" onClick={()=>dispatch(toggle())} >
           isDone
-        </Button> */}
+        </Button>
       </Card.Body>
     </Card>
   );

@@ -2,10 +2,13 @@ import {
   ADD_TASK,
   DELETE_TASK,
   COMPLETE_TASK,
+  EDIT_TASK,
+  TOGGLE,
 } from "../constants/actionsTypes";
 
 const intialState = {
   list: [],
+  show: false
 };
 
 const reducerTask = (state = intialState, action) => {
@@ -26,6 +29,17 @@ const reducerTask = (state = intialState, action) => {
           el.id === action.id ? { ...el, isDone: !el.isDone } : el
         ),
       };
+
+    case EDIT_TASK:
+      return {
+        ...state,
+        list: state.list.map((el) =>
+          el.id === action.id ? { ...el, text: action.text } : el
+        ),
+      };
+
+    case TOGGLE:
+      return {...state, show:!state.show}
 
     default:
       return state;
